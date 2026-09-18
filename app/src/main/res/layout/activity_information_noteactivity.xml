@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:text="Email: user@gmail.com"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- Date -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmail"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:text="Date create : "
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- Change password -->
+    <TextView
+        android:id="@+id/tvChangePass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDate"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:text="Change Password"
+        android:textColor="@color/light_blue_600"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

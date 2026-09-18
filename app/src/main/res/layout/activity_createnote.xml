@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Toolbar với tiêu đề note -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarcreatenote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/titlecreatenote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tiêu đề"
+            android:paddingTop="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Thanh công cụ: chọn màu + priority -->
+    <HorizontalScrollView
+        android:id="@+id/optionsBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarcreatenote">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Màu: "
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="4dp"/>
+
+            <!-- Các ô chọn màu (được tạo bằng code trong createnote.kt) -->
+            <LinearLayout
+                android:id="@+id/colorPickerContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Màu trắng (mặc định) -->
+                <View android:id="@+id/color_white"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFFFFF"
+                    android:outlineProvider="background"/>
+
+                <!-- Màu hồng -->
+                <View android:id="@+id/color_pink"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFD1DC"/>
+
+                <!-- Màu vàng -->
+                <View android:id="@+id/color_yellow"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFD700"/>
+
+                <!-- Màu xanh lá -->
+                <View android:id="@+id/color_green"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#B5EAD7"/>
+
+                <!-- Màu xanh dương nhạt -->
+                <View android:id="@+id/color_blue"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#AEC6CF"/>
+
+                <!-- Màu tím nhạt -->
+                <View android:id="@+id/color_purple"
+                    android:layout_width="28dp" android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#E6CCFF"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ưu tiên: "
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="4dp"/>
+
+            <Spinner
+                android:id="@+id/prioritySpinner"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Đường kẻ phân cách -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#EEEEEE"
+        app:layout_constraintTop_toBottomOf="@id/optionsBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Nội dung note -->
+    <EditText
+        android:id="@+id/contentcreatenote"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="Viết gì đó..."
+        android:gravity="top|start"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Nút lưu -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="Save note"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/diskette"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
