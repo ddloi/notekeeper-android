@@ -1,145 +1,86 @@
-﻿# NoteKeeper — Smart Notes Android App
+# 📱 NoteKeeper — Smart Native Android Notes Application
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
   <img src="https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" />
   <img src="https://img.shields.io/badge/Firebase-Firestore-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
   <img src="https://img.shields.io/badge/Min_SDK-24_(Android_7.0)-brightgreen?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Developer-ddloi-58A6FF?style=for-the-badge&logo=github&logoColor=white" />
 </p>
 
 <p align="center">
-  A feature-rich Android note-taking application built with Kotlin and Firebase, offering real-time sync, priority management, and a clean Material UI.
+  A feature-packed native Android note-taking mobile application built with Kotlin and Google Firebase Cloud Firestore (real-time NoSQL synchronization), engineered by <strong>Đặng Đại Lợi (<a href="https://github.com/ddloi">@ddloi</a>)</strong>.
 </p>
 
 ---
 
-## Features
+## 🌟 Key Features
 
-| Feature | Description |
-|---|---|
-| Authentication | Email/password sign-up & login with Firebase Auth |
-| Forgot Password | Password reset via email link |
-| Create & Edit Notes | Rich note editor with title, content, and priority |
-| Priority Badges | Label notes as Low / Medium / High priority |
-| Trash / Recycle Bin | Deleted notes move to trash before permanent deletion |
-| Real-time Sync | Notes synced instantly via Firebase Firestore |
-| Dark Mode | Full dark mode support |
-| Note Information | View creation date and metadata for each note |
+| Feature | Technical Implementation |
+| :--- | :--- |
+| **Authentication** | Secure Email/Password registration & sign-in powered by Firebase Authentication |
+| **Real-time Sync** | Automatic bidirectional note synchronization via Firebase Cloud Firestore |
+| **Priority Classification** | Color-coded priority classification (High, Medium, Low) for task organization |
+| **Recycle Bin / Trash** | Two-phase soft deletion with note recovery and permanent purging |
+| **Offline-First Resilience** | Local cache persistence allows reading and editing notes without active internet |
+| **Material 3 Design** | Modern dark and light theme palettes following Material Design Guidelines |
 
 ---
 
-## Tech Stack
+## 🏗️ Architecture & Tech Stack
 
 - **Language:** Kotlin
-- **Architecture:** Activity-based (MVP pattern)
-- **Database:** Firebase Firestore (NoSQL, real-time)
-- **Authentication:** Firebase Authentication
-- **UI:** Android XML Layouts, Material Design Components
-- **Build Tool:** Gradle (Kotlin DSL)
-- **Min SDK:** 24 (Android 7.0 Nougat)
-- **Target SDK:** 36
+- **Architecture Pattern:** Model-View-Presenter (MVP) with clean separation of UI and Firebase services
+- **Cloud Database:** Firebase Firestore (Document-based real-time NoSQL)
+- **Identity & Auth:** Firebase Authentication
+- **Build System:** Gradle (Kotlin DSL, Target SDK 36, Min SDK 24)
 
----
-
-## Project Structure
-
-```
-NoteApp/
-├── app/
-│   └── src/
-│       └── main/
-│           ├── java/com/example/noteapp/
-│           │   ├── MainActivity.kt          # Login screen
-│           │   ├── SignUp.kt                # Registration screen
-│           │   ├── ForgotPassword.kt        # Password reset
-│           │   ├── noteActivity.kt          # Notes list (home)
-│           │   ├── createnote.kt            # Create new note
-│           │   ├── editnote.kt              # Edit existing note
-│           │   ├── information_noteactivity.kt  # Note detail/info
-│           │   ├── TrashActivity.kt         # Trash bin
-│           │   └── firebasemodel.kt         # Firebase data model
-│           └── res/
-│               ├── layout/                  # XML layouts
-│               ├── drawable/                # Icons and backgrounds
-│               └── values/                 # Colors, strings, themes
-└── gradle/
-    └── libs.versions.toml                   # Dependency versions
+```text
+app/src/main/
+├── java/com/example/noteapp/
+│   ├── MainActivity.kt          # Authentication & Login Controller
+│   ├── SignUp.kt                # User Registration Controller
+│   ├── noteActivity.kt          # Primary Notes Grid / Feed
+│   ├── createnote.kt            # Note Creation with Priority Selector
+│   ├── editnote.kt              # Real-time Note Editing
+│   ├── TrashActivity.kt         # Soft-delete Recovery & Purge Bin
+│   └── firebasemodel.kt         # Firestore Note Data Entity
+└── res/
+    ├── layout/                  # Responsive XML Layouts
+    └── values/                  # Material Color Tokens & Typography
 ```
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-
-- **Android Studio** Hedgehog (2023.1.1) or later
-- **JDK 11** or higher
-- **Firebase account** (for Firestore and Auth)
+- **Android Studio** (Hedgehog 2023.1.1 or newer)
+- **JDK 17+**
+- Active **Google Firebase** project
 
 ### 1. Clone the Repository
-
 ```bash
-git clone https://github.com/DataZenLab/notekeeper.git
-cd notekeeper
+git clone https://github.com/ddloi/notekeeper-android.git
+cd notekeeper-android
 ```
 
-### 2. Firebase Setup
+### 2. Firebase Configuration
+1. Open the project in **Android Studio**.
+2. Go to [Firebase Console](https://console.firebase.google.com/) and register an Android app with package:
+   `com.example.noteapp`
+3. Download `google-services.json` and place it in the `app/` directory.
+4. Enable **Firestore Database** and **Firebase Authentication** (Email/Password).
 
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project (or use an existing one)
-3. Add an **Android app** with package name: `com.example.noteapp`
-4. Download `google-services.json` and place it in the `app/` directory
-5. Enable **Firestore Database** (Start in test mode for development)
-6. Enable **Firebase Authentication** then enable the Email/Password provider
-
-### 3. Firestore Data Structure
-
-```
-users/
-  {userId}/
-    notes/
-      {noteId}/
-        title: String
-        content: String
-        priority: String  (Low | Medium | High)
-        createdAt: Timestamp
-        isDeleted: Boolean
-```
-
-### 4. Build and Run
-
-1. Open the project in **Android Studio**
-2. Wait for Gradle sync to complete
-3. Connect an Android device or start an emulator (API 24+)
-4. Click **Run** or press Shift + F10
+### 3. Build & Run
+Connect an Android device (USB debugging enabled) or start an Android Emulator, then click **Run (Shift + F10)**.
 
 ---
 
-## Security Notes
+## 👨‍💻 Author & Contact
 
-The `google-services.json` file is excluded from version control via `.gitignore`.
-Never commit this file as it contains your Firebase project credentials.
-
----
-
-## Roadmap
-
-- [ ] Search and filter notes
-- [ ] Color-coded note categories
-- [ ] Reminder / alarm notifications
-- [ ] Markdown support in note editor
-- [ ] Biometric authentication
-
----
-
-## Author
-
-**DataZenLab**
-- GitHub: [@DataZenLab](https://github.com/DataZenLab)
-
----
-
-## License
-
-This project is licensed under the **MIT License**.
+- **Developer:** Đặng Đại Lợi
+- **GitHub:** [@ddloi](https://github.com/ddloi)
+- **Email:** [dangdailoi732006@gmail.com](mailto:dangdailoi732006@gmail.com)
+- **LinkedIn:** [ddloi](https://www.linkedin.com/in/ddloi)
+- **Institution:** HUFLIT (Ho Chi Minh City University of Foreign Languages & Information Technology)
