@@ -14,6 +14,16 @@
 
 ---
 
+## 📸 Application UI Showcase
+
+<p align="center">
+  <img src="docs/notekeeper_preview.jpg" alt="NoteKeeper Mobile App Showcase" width="95%" />
+  <br/>
+  <em>Figure 1: NoteKeeper Interface — Notes feed with priority badges (High, Medium, Low), detailed note viewer, and real-time Markdown note editor.</em>
+</p>
+
+---
+
 ## 🌟 Key Features
 
 | Feature | Technical Implementation |
